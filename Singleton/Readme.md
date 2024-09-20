@@ -42,3 +42,9 @@ public class Programa
     }
 }
 ```
+###Corrida del programa
+```plaintext
+Guardia actual: Saga de Géminis
+El nuevo guardián del Santuario es: Seiya de Pegaso
+Guardia actual (desde la segunda instancia): Seiya de Pegaso
+```
