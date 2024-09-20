@@ -1,4 +1,4 @@
-###Ejemplo De Singleton Usando como tematica Los caballeros del zodiaco
+##Ejemplo De Singleton Usando como tematica Los caballeros del zodiaco
 
 ```csharp
 
@@ -42,7 +42,7 @@ public class Programa
     }
 }
 ```
-###Corrida del programa
+##Corrida del programa
 ```plaintext
 Guardia actual: Saga de Géminis
 El nuevo guardián del Santuario es: Seiya de Pegaso
