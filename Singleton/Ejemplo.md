@@ -1,50 +1,89 @@
-Ejemplo De Singleton Usando como tematica Los caballeros del zodiaco
+# Problema que resuelva Singleton
+
+## Contexto y Solución del Problema
+Contexto: En aplicaciones grandes, como configuraciones de usuario, hay a menudo la necesidad de acceder y modificar configuraciones desde diferentes partes del programa. Si permitimos que múltiples instancias de un objeto de configuración coexistan, podríamos enfrentar problemas de sincronización y inconsistencias, como configuraciones que no se actualizan en todas las partes del programa o accesos concurrentes que provocan errores.
+
+## Cómo el Patrón Singleton Ayuda:
+
+* Instancia Única: Asegura que solo haya una instancia de la clase ConfigManager en todo el programa. Esto previene inconsistencias en la configuración ya que todas las partes del programa acceden a la misma instancia.
+
+* Sincronización Segura: Usa un bloqueo (lock) para garantizar que en un entorno multi-hilo, solo una instancia de ConfigManager se cree, evitando problemas de sincronización y condiciones de carrera.
+
+* Acceso Global: Proporciona un punto de acceso global a la configuración a través de ConfigManager.Instance, facilitando el acceso y la modificación de configuraciones desde cualquier lugar en el programa sin tener que pasar referencias de la instancia.
+
+Este patrón es ideal para casos donde se necesita una única fuente de verdad y control centralizado sobre una funcionalidad específica, como la gestión de configuraciones en este ejemplo.
 
 ```csharp
-
 using System;
 
-public class Santuario
+public class ConfigManager
 {
-    private static readonly Lazy<Santuario> instanciaUnica = new Lazy<Santuario>(() => new Santuario());
+    // Instancia privada y estática del Singleton
+    private static ConfigManager _instance;
 
-    public string CaballeroGuardian { get; private set; }
+    // Objeto para la sincronización de acceso a hilos
+    private static readonly object _lock = new object();
 
-    private Santuario()
+    // Propiedad para acceder a la instancia del Singleton
+    public static ConfigManager Instance
     {
-        CaballeroGuardian = "Saga de Géminis";
+        get
+        {
+            // Usamos doble verificación para garantizar que solo se cree una instancia
+            if (_instance == null)
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new ConfigManager();
+                    }
+                }
+            }
+            return _instance;
+        }
     }
 
-    public static Santuario ObtenerInstancia()
+    // Constructor privado para evitar instanciación externa
+    private ConfigManager()
     {
-        return instanciaUnica.Value;
+        // Cargar configuraciones iniciales
     }
 
-    public void CambiarGuardian(string nuevoGuardian)
+    // Método de configuración para establecer valores
+    public void SetConfig(string key, string value)
     {
-        CaballeroGuardian = nuevoGuardian;
-        Console.WriteLine("El nuevo guardián del Santuario es: " + CaballeroGuardian);
+        // Lógica para guardar configuración
+        Console.WriteLine("Setting config '" + key + "' to '" + value + "'");
+    }
+
+    // Método para obtener configuraciones
+    public string GetConfig(string key)
+    {
+        // Lógica para recuperar configuración
+        return "configValue"; // Ejemplo
     }
 }
 
-public class Programa
+public class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        Santuario santuario1 = Santuario.ObtenerInstancia();
-        Console.WriteLine("Guardia actual: " + santuario1.CaballeroGuardian);
-
-        Santuario santuario2 = Santuario.ObtenerInstancia();
-
-        santuario1.CambiarGuardian("Seiya de Pegaso");
-
-        Console.WriteLine("Guardia actual (desde la segunda instancia): " + santuario2.CaballeroGuardian);
+        // Ejemplo de uso del Singleton
+        ConfigManager config = ConfigManager.Instance;
+        config.SetConfig("Theme", "Dark");
+        Console.WriteLine(config.GetConfig("Theme")); // Imprime "configValue"
     }
 }
+
 ```
-Corrida del programa
+# Corrida del programa
 ```plaintext
-Guardia actual: Saga de Géminis
-El nuevo guardián del Santuario es: Seiya de Pegaso
-Guardia actual (desde la segunda instancia): Seiya de Pegaso
+Setting config 'Theme' to 'Dark'
+configValue
 ```
+# Explicacion de la salida
+
+Setting config 'Theme' to 'Dark': Este mensaje se imprime desde el método SetConfig para indicar que la configuración 'Theme' se ha establecido en 'Dark'.
+
+configValue: Este mensaje se imprime desde el método GetConfig, que devuelve el valor de la configuración solicitada. En el ejemplo, el valor devuelto es un valor fijo "configValue" para ilustrar el funcionamiento del patrón Singleton.
