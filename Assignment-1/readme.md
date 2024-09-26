@@ -16,7 +16,7 @@ No.Control 20211803
 En el universo de Los Caballeros del Zodiaco, cada caballero tiene un comportamiento de ataque que varía según su signo y armadura. Queremos encapsular estos diferentes comportamientos de ataque para que puedan ser intercambiables sin modificar el código del caballero. Esto ayudará a cambiar el comportamiento de un caballero en tiempo de ejecución sin modificar la clase principal.
 
 # Solución:
-Para resolver este problema, podemos usar el Patrón Estrategia (Strategy Pattern), que pertenece a las categorías creacional y comportamental. Este patrón permite definir una familia de algoritmos o comportamientos, encapsularlos en clases separadas y hacerlos intercambiables, permitiendo que el comportamiento del objeto cambie dinámicamente.
+Para resolver este problema, podemos usar El Patrón Estrategia (Strategy Pattern), que pertenece a la categoría de patrones comportamentales. Este patrón permite definir una familia de algoritmos o comportamientos, encapsularlos en clases separadas y hacerlos intercambiables, permitiendo que el comportamiento del objeto cambie dinámicamente.
 
 # Diseño:
 Cada caballero tendrá un comportamiento de ataque encapsulado en una estrategia de ataque.
