@@ -294,4 +294,4 @@ Ammo Type: Energy
 * Ejecución del sistema: El cliente selecciona un tipo de arma (usando una fábrica concreta) y el sistema se encarga de generar el arma correspondiente y mostrar sus especificaciones.
 
 # Codigo en el Compilador online
-https://dotnetfiddle.net
+[https://dotnetfiddle.net](https://dotnetfiddle.net/2kzErS)
