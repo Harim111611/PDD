@@ -144,9 +144,13 @@ https://dotnetfiddle.net/8UmIAl
 En el universo de Warhammer 40k, diferentes tipos de armas tecnológicas son usadas por diversas facciones, como los Marines Espaciales, la Guardia Imperial, o los Necrones. Cada facción tiene armas con características específicas (daño, rango, tipo de munición, etc.), pero todas siguen una estructura común de "Arma". El reto es crear un sistema en el que se puedan generar diferentes tipos de armas sin cambiar el código base, promoviendo la reutilización de código y facilitando la adición de nuevas armas en el futuro.
 
 
-# Solución: Patrón Factory
+Solución: Patrón Factory
+El Patrón Factory nos permite crear objetos de diferentes tipos de armas sin que el cliente se preocupe por la lógica específica de cómo se instancian. En este caso, tenemos armas de diferentes facciones que siguen una estructura común, pero tienen distintas propiedades. El patrón Factory asegura que, cuando se requiera una nueva arma, simplemente se cree una nueva fábrica sin modificar el código base.
 
-Usamos el patrón de diseño Factory para crear objetos de diferentes tipos de armas sin exponer la lógica de creación al cliente. De esta manera, el cliente solo interactúa con una interfaz común y no tiene que preocuparse por las particularidades de cada tipo de arma.
+Diseño del Código:
+El cliente (`WeaponSelectionSystem`) interactúa con la fábrica de armas, la cual es responsable de crear instancias de diferentes tipos de armas (`Bolter`, `Lasgun`, `Gauss Flayer`). De esta manera, el cliente no necesita conocer los detalles específicos de cada arma, sino que simplemente interactúa con la interfaz IWeapon que garantiza que todas las armas implementen el método `DisplaySpecifications()`.
+
+
 
 # Codigo en C#
 ```csharp
