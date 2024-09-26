@@ -22,6 +22,7 @@ Para resolver este problema, podemos usar el Patrón Estrategia (Strategy Patter
 Cada caballero tendrá un comportamiento de ataque encapsulado en una estrategia de ataque.
 Cada estrategia será una clase separada y podrá intercambiarse dinámicamente.
 
+# Codigo en C#
 ```csharp
 using System;
 
@@ -124,3 +125,34 @@ El caballero realiza ataques diferentes (Pegaso, Cisne y Capricornio) sin modifi
 
 # Codigo en el Compilador online
 https://dotnetfiddle.net/8UmIAl
+
+# Segundo Giro
+
+![image](https://github.com/user-attachments/assets/ca2a9a2b-19a3-437e-a246-cd3af8a4fc03)
+
+
+* Categoría: Creacional
+* Dominio: Tecnología
+* Requisito: Reutilización de Código y Componentes
+* Patrón de diseño seleccionado:  
+
+# Problema:
+
+
+# Solución:
+
+
+# Diseño:
+
+# Codigo en C#
+
+# Corrida
+```plaintext
+
+```
+
+# Explicación del Código
+
+
+# Codigo en el Compilador online
+
