@@ -281,15 +281,15 @@ Ammo Type: Energy
 
 # Explicación del Código
  
-* Interfaz IWeapon: Define una interfaz común para todas las armas. Todas las armas tendrán que implementar el método DisplaySpecifications(), que mostrará las especificaciones de esa arma en particular.
+* Interfaz `IWeapon`: Define una interfaz común para todas las armas. Todas las armas tendrán que implementar el método `DisplaySpecifications()`, que mostrará las especificaciones de esa arma en particular.
 
-* Clases concretas (Bolter, Lasgun, GaussFlayer): Cada clase concreta representa un tipo específico de arma. Estas clases implementan la interfaz IWeapon, proporcionando sus propias especificaciones.
+* Clases concretas (`Bolter`, `Lasgun`, `GaussFlayer`): Cada clase concreta representa un tipo específico de arma. Estas clases implementan la interfaz `IWeapon`, proporcionando sus propias especificaciones.
 
 * Fábrica abstracta WeaponFactory: Esta es una clase abstracta que declara el método CreateWeapon(). Las subclases concretas que la extienden implementarán la lógica de creación para diferentes tipos de armas.
 
-* Fábricas concretas: Tenemos tres fábricas concretas (BolterFactory, LasgunFactory, GaussFlayerFactory), cada una de las cuales es responsable de crear su tipo de arma específico.
+* Fábricas concretas: Tenemos tres fábricas concretas (`BolterFactory`, `LasgunFactory`, `GaussFlayerFactory`), cada una de las cuales es responsable de crear su tipo de arma específico.
 
-* Cliente WeaponSelectionSystem: El cliente no sabe ni le importa qué tipo de arma se está creando. Solo necesita interactuar con la fábrica y obtener un objeto de arma que sigue la interfaz común.
+* Cliente `WeaponSelectionSystem`: El cliente no sabe ni le importa qué tipo de arma se está creando. Solo necesita interactuar con la fábrica y obtener un objeto de arma que sigue la interfaz común.
 
 * Ejecución del sistema: El cliente selecciona un tipo de arma (usando una fábrica concreta) y el sistema se encarga de generar el arma correspondiente y mostrar sus especificaciones.
 
